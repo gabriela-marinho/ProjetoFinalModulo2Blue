@@ -22,14 +22,21 @@ class racas(db.Model):
     nome = db.Column(db.String(255), nullable=False)
     imagem = db.Column(db.String(255), nullable=False)
 
-    def __init__(self, nome, imageml):
+    def __init__(self, nome, imagem):
         self.nome = nome
-        self.imagem_url = imagem
+        self.imagem = imagem
     
     @staticmethod
     def read_all():
         # SELECT * FROM filmes ORDER BY id ASC
         return racas.query.order_by(racas.id.asc()).all()
+    db = SQLAlchemy(app)
+    @staticmethod
+    def read_single(id_registro):
+        # SELECT * FROM filmes ORDER BY id ASC
+        return racas.query.get(id_registro)
+    db = SQLAlchemy(app)    
+    
 
 
 @app.route("/")
@@ -47,7 +54,8 @@ def read_all():
 
 @app.route("/read/<id_registro>")
 def read_id(id_registro):
-    return "Em construção - Visualizar registro de ID "+id_registro
+    registro= racas.read_single(id_registro)
+    return  render_template("read_single.html", registro=registro)
 
 
 @app.route("/create")

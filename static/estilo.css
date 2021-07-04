@@ -56,3 +56,8 @@ body {
 .tabela_header td{
     font-weight: bold;
 }
+
+#imagemEstilo{
+    max-height: 400px;
+    text-align: center;
+}
