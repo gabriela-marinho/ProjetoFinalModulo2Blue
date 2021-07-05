@@ -23,10 +23,11 @@ class racas(db.Model):
     nome = db.Column(db.String(255), nullable=False)
     imagem = db.Column(db.String(255), nullable=False)
 
-    def __init__(self, nome, imagem):
+    def __init__(self, nome, imagem,curiosidade):
         self.nome = nome
         self.imagem = imagem
-    
+        self.curiosidade = curiosidade
+    # o static usa ,geralmente em uma manipulaçao que vai trazer algum registro do banco
     @staticmethod
     def read_all():
         # SELECT * FROM filmes ORDER BY id ASC
@@ -44,6 +45,12 @@ class racas(db.Model):
     #não é staticmethod pq nao precisa de uma qyuery para ser chamado e adicionado
         db.session.add(self)
         db.session.commit()
+
+    def update(self,novo_nome,novo_imagem,novo_curiosidade):
+        self.nome = novo_nome
+        self.imagem = novo_imagem
+        self.curiosidade = novo_curiosidade
+        self.save()
 
 @app.route("/")
 def index():
@@ -71,14 +78,25 @@ def create():
     if request.method == 'POST': # verifica se está recebendo alguma coisa por POST
         form = request.form # armazena o formulário recebido por POST
 
-        registro = racas(form['nome'], form['imagem']) # cria um novo registro (objeto) com nome e imagem_url recebidos
+        registro = racas(form['nome'], form['imagem'],form['curiosidade']) # cria um novo registro (objeto) com nome e imagem_url recebidos
         registro.save() # chama a função save da classe (adiciona e commita)
 
         id_registro_novo = registro.id # atribui a novo_id o ID do novo registro criado
 
     return render_template("create.html",id_registro_novo = id_registro_novo) # carrega o create.html passando o valor de novo_id (None ou novo ID atribuído)
 
+@app.route("/update/<id_registro>", methods=('GET', 'POST'))
+def update(id_registro):
+    sucesso = False # se foi alterado com sucesso ou nao
+    registro= racas.read_single(id_registro)
 
+    if request.method == 'POST':
+        form = request.form
+        registro.update(form['nome'], form['imagem'],form['curiosidade'])
+        # # novo_registro = racas(form['nome'], form['imagem'],form['curiosidade'])
+        # registro.update(novo_registro)
+        sucesso = True
+    return render_template('update.html',registro=registro,sucesso=sucesso)   
 
 if (__name__ == "__main__"):
     app.run(debug=True)

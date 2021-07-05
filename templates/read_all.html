@@ -29,7 +29,11 @@
                 <td>{{ registro["id"] }}</td>
                 <td>{{ registro["nome"] }}</td>
                 <td><img src=" {{ registro['imagem'] }}" alt="{{ registro['raça'] }}" width="150" height="200" /></td>
-                <td><a href="/read/{{ registro['id'] }}" class="botao">Curiosidades</a></td>
+                <td>
+                    <a href="/read/{{ registro['id'] }}" class="botao">Curiosidades</a>
+                    <a href="/update/{{ registro['id'] }}" class="botao">Editar</a>
+                    <a href="/delete/{{ registro['id'] }}" class="botao">Deletar</a>
+                </td>
             </tr>
 
             {% endfor %}
