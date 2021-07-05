@@ -1,5 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,request
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.datastructures import RequestCacheControl
 
 app = Flask(__name__)
 
@@ -31,6 +32,7 @@ class racas(db.Model):
         # SELECT * FROM filmes ORDER BY id ASC
         return racas.query.order_by(racas.id.asc()).all()
     db = SQLAlchemy(app)
+
     @staticmethod
     def read_single(id_registro):
         # SELECT * FROM filmes ORDER BY id ASC
@@ -38,6 +40,10 @@ class racas(db.Model):
     db = SQLAlchemy(app)    
     
 
+    def save(self): #função para salvar os dados inserido via input no bd, 
+    #não é staticmethod pq nao precisa de uma qyuery para ser chamado e adicionado
+        db.session.add(self)
+        db.session.commit()
 
 @app.route("/")
 def index():
@@ -55,12 +61,23 @@ def read_all():
 @app.route("/read/<id_registro>")
 def read_id(id_registro):
     registro= racas.read_single(id_registro)
-    return  render_template("read_single.html", registro=registro)
+    return render_template("read_single.html", registro=registro)
 
 
-@app.route("/create")
+@app.route("/create", methods=('GET', 'POST'))
 def create():
-    return "Em construção - Ainda será feito o CREATE!"
+    id_registro_novo = None # cria uma variável nula para o novo ID atribuído
+
+    if request.method == 'POST': # verifica se está recebendo alguma coisa por POST
+        form = request.form # armazena o formulário recebido por POST
+
+        registro = racas(form['nome'], form['imagem']) # cria um novo registro (objeto) com nome e imagem_url recebidos
+        registro.save() # chama a função save da classe (adiciona e commita)
+
+        id_registro_novo = registro.id # atribui a novo_id o ID do novo registro criado
+
+    return render_template("create.html",id_registro_novo = id_registro_novo) # carrega o create.html passando o valor de novo_id (None ou novo ID atribuído)
+
 
 
 if (__name__ == "__main__"):
