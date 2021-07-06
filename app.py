@@ -17,13 +17,14 @@ app.secret_key = "chave escondidamente"
 # Instanciando objeto da classe SQLAlchemy
 db = SQLAlchemy(app)
 
-# Modelar a Classe Filmes -> tabela filmes
+# Modelar a Classe Filmes -> tabela racas
 class racas(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(255), nullable=False)
     imagem = db.Column(db.String(255), nullable=False)
+    curiosidade = db.Column(db.String(10000),nullable=False)
 
-    def __init__(self, nome, imagem,curiosidade):
+    def __init__(self, nome, imagem, curiosidade):
         self.nome = nome
         self.imagem = imagem
         self.curiosidade = curiosidade
@@ -60,7 +61,7 @@ def index():
 @app.route("/read")
 def read_all():
     registros = racas.read_all()
-    # Chamada do método read_all da classe Filmes, que representa a tabela filmes do banco de dados.
+    # Chamada do método read_all da classe racas, que representa a tabela racas do banco de dados.
     registros = racas.read_all()
     return render_template("read_all.html", registros=registros)
 
