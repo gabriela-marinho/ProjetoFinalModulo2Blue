@@ -72,17 +72,17 @@ body {
 .form_input{
     align-items: center;
     justify-content: space-between;
-    border-spacing: 0;
+    border-spacing: 150;
 }
 
 .form_input label{
     font-weight: bold;
-    padding-right: 20px;
+    padding-right: 30px;
 }
 
 .form_input input[ type=text]{
     width: 500px;
-    padding: 6px;
+    padding: 10px;
     margin: 6px 0;
     display: inline-block;
     border-radius: 4px;
@@ -91,7 +91,7 @@ body {
 }
 
 .form_input input[type=submit]{
-    width:110%;
+    width:100%;
 }
 
 .id_registro_novo{
