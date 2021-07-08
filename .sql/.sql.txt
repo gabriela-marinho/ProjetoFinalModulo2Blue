@@ -1,0 +1,117 @@
+CREATE TABLE racas(
+		id SERIAL  PRIMARY KEY,
+		nome varchar(255) NOT NULL,
+		imagem varchar(255) NOT NULL,
+		curiosidade varchar(10000)
+);
+
+INSERT INTO racas (nome,imagem)
+VALUES  ('PASTOR BELGA','https://vetsmart-parsefiles.s3.amazonaws.com/dc610af939770e706706911261b90112_breed.jpg'),
+		('LABRADOR','https://www.petlove.com.br/dicas/wp-content/uploads/2018/11/cores-do-labrador.png'),
+		('SHIH TZU','https://meuamigopet.com.br/wp-content/uploads/2019/10/Shih-Tzu.jpg'),
+		('BEAGLE','https://cachorrosincriveis.com.br/wp-content/uploads/2018/09/filhote-de-beagle-3-696x464.jpg'),
+		('PEQUENO GALGO ITALIANO','https://mytxai.pet/wp-content/uploads/2019/04/Galgo-italiano-desk.png'),
+		('ROTTWEILER','https://www.petlove.com.br/images/breeds/193099/profile/original/rottweiler-p.jpg?1532539428'),
+		('BICHON FRISÉ','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzxo_QOovJ_j7oRyDfbCxawxgZA6jwpHl6hA&usqp=CAU');
+		
+
+
+INSERT INTO racas (curiosidades)
+VALUES ( Ao fim do ano de 1800, existia na Bélgica um
+grande número de cães condutores de rebanhos, cujo tipo era heterogêneo e a pelagem
+de extrema diversidade. A fim de por um pouco de ordem nisso, cinófilos apaixonados
+constituíram um grupo e se deixaram esclarecer pelo professor A. Reul, da Escola de
+Medicina Veterinária de Cureghem, que é considerado o verdadeiro pioneiro e fundador
+da raça.
+Foi entre 1891 e 1897 que a raça nasceu oficialmente. Em 29 de setembro de 1891, foi
+fundado em Bruxelas o “Clube do Cão do Pastor Belga” e, ainda, no mesmo ano, em
+15 de novembro, o professor A. Reul organizou em Cureghem uma reunião de 117
+cães, o que permitiu efetuar um recenseamento e escolher os melhores exemplares.
+Nos anos seguintes, começou uma verdadeira seleção, praticando uma extrema
+consangüinidade sobre alguns reprodutores.
+Em 3 de abril 1892, um primeiro standard bem detalhado da raça foi redigido pelo
+Clube do Cão do Pastor Belga. Uma só raça foi admitida, com 3 variedades de
+pelos. Todavia, nessa época, poucas pessoas tinham um Pastor Belga, portanto, era
+uma raça que ainda não tinha prestígio. Por conseqüência, foi somente em 1901 que
+os primeiros Pastores Belgas foram registrados no livro de Origens da Société Royale
+de Saint-Hubert (L.O.S.H.).
+Durante os anos seguintes, os dirigentes da cinofilia pastoreia belga trabalharam com
+tenacidade para unificar o tipo e corrigir os defeitos. Pode-se dizer que em 1910 o tipo
+e o caráter do Pastor Belga tinham sido fixados. Durante a história do Pastor Belga, a
+questão das diversas variedades e das cores admitidas deram lugar a muitas
+controvérsias. Por outro lado, no que concerne à morfologia, ao caráter e à aptidão
+para o trabalho, nunca houve desacordo),
+
+	(Popularmente considera-se que o Labrador
+Retriever teve origem na costa de Terra Nova, onde os pescadores foram vistos
+usando um cão de aparência semelhante para recuperar peixes. Um excelente cão de
+água; pelo resistente às intempéries e cauda singular, comparada à de uma lontra
+devido à sua forma, enfatizam essa característica. Comparativamente falando, o
+Labrador não é uma raça muito antiga, tendo sido formado o clube da raça em 1916
+e o Clube do Labrador Amarelo foi fundado em 1925. Foi nas provas de campo que
+o Labrador encontrou a fama cedo, tendo sido originalmente introduzido nesta atividade
+no final de 1800 pelo Coronel Peter Hawker e pelo Conde de Malmesbury. Foi um
+cão chamado de Malmesbury Tramp, descrito por Lorna, Condessa de Howe, uma
+das raízes do atual Labrador.),
+	(As pessoas tendem a se confundir entre os
+Apso e Shih Tzu, mas há uma série de diferenças muito distintas entre eles. As raízes
+desta raça estão no Tibete, mas ela foi desenvolvida na China, onde cães como estes
+viviam nos palácios imperiais. A China se tornou uma república em 1912, após o que
+exemplares da raça encontraram seu caminho para o ocidente, embora a primeira
+importação registrada para a Grã-Bretanha não ocorreu antes de 1931. Foi reconhecida
+como uma raça distinta de outras raças orientais em 1934, sendo concedido um
+registro separado pelo The Kennel Club em 1940, com certificados para campeonato
+disponibilizados a partir de 1949. O visual do crisântemo para a cabeça do Shih Tzu
+é o mais atraente, e isso é causado pelo crescimento do pelo para cima, na ponte
+nasal.),
+	(Dizem que o Beagle deve ter sido produzido a
+partir do grande Foxhound para caçar com os homens a pé, de preferência atrás da
+lebre. Ele ainda é usado em matilhas, muitas vezes organizadas por instituições, incluindo
+universidades e escolas. Um ansioso e irrequieto cãozinho, cheio de entusiasmo e
+vigor e sempre pronto para qualquer atividade que o envolva. Tudo sobre a raça dá a
+impressão de atletismo e não existe melhor visão do que uma matilha de Beagle em
+plena perseguição, suas cabeças baixas farejando, as caudas rígidas para cima e
+concentrados na perseguição. Durante o reinado do Rei Henrique VIII e da rainha
+Elizabeth I existiam Beagles de pelo duro, alguns dos quais eram pequenos o suficiente
+para serem transportados no bolso de um casaco de caça. O tamanho tem aumentado
+ao longo dos anos, mas versões menores da raça, chamadas de “Beagles de bolso”,
+algumas vezes nascem.),
+	( O pequeno Greyhound Italiano descende dos
+pequenos “sighthounds” (lebréis) que já existiram no antigo Egito na corte dos Faraós.
+Passando pela Lacônia (Grécia), onde numerosas representações em vasos e tigelas
+confirmam isto, a raça chegou à Itália no início do século V A.C. Seu maior
+desenvolvimento ocorreu durante a era do Renascimento na corte dos nobres. Não é
+raro achar o Pequeno Lebrel Italiano representado em pinturas dos maiores mestres
+italianos e estrangeiros),
+	(: O Rottweiler figura entre as raças mais antigas.
+Sua origem remonta à época dos romanos, onde foi criado como um cão de guarda
+e boiadeiro. Esses cães imigraram com as legiões romanas através dos Alpes,
+guardando homens e tocando o rebanho. Nos arredores de Rottweil, eles se
+encontraram com os cães da região. Houve, então, uma miscigenação. A tarefa principal
+do Rottweiler voltava a ser a condução e a guarda de grandes rebanhos, de grandes
+animais e a defesa do seu dono e seu patrimônio. Ele recebeu esse nome por causa
+da antiga cidade de Rottweil: Rottweiler Metz-gerhund (Cão de açougueiro de
+Rottweil). Os açougueiros criaram esta raça por pura exibição, sem qualquer utilidade
+para ele. Assim, no decorrer do tempo, este cão de passeio passou a ser mais utilizado
+como cão de tração. No início do século, quando se pesquisaram diversas raças
+para a função policial, o Rottweiler também foi avaliado. Em pouco tempo demonstrou
+ser extraordinariamente adequado às tarefas do serviço policial. Por esta razão, no
+ano de 1910, foi oficialmente reconhecido como um cão policial. A criação do
+Rottweiler pretende um cão forte, preto com marcações em marrom avermelhado,
+claramente definidas, que, apesar do aspecto geral massudo, não deve prescindir de
+nobreza, sendo altamente indicado como cão de companhia, proteção, resgate e
+utilidade),
+	( O Bichon Frisé foi trazido para a França da
+Itália durante o Renascimento. Como era assemelhado a um Barbet muito pequeno,
+lhe foi dado o nome do "barbichon", nome abreviado para "bichon". Nos séculos 17
+e 18, muitos pintores renomados retrataram esses pequenos cães que acompanhavam
+reis, nobres e outras pessoas notáveis. A raça voltou à moda com Napoleão III, e era
+conhecida naquela época como o "Ténériffe". Foi então popularizada, tornando-se
+bem estimada tanto na Bélgica como na França. Quase desapareceu após as duas
+guerras mundiais. É graças à paixão de alguns criadores franceses e belgas que a sua
+população foi capaz de ser reconstituída. O primeiro cão, registrado em Bélgica, foi
+Pitou, nascido em 23.03.1924 e registado no registro de pedigree belga (LOSH) em
+1932. O n° 1 no registro de pedigree francês (LOF) foi atribuído em 18.10.1934 a
+Ida, uma fêmea Bichon Frisé. O nome francês atual - Bichon à poil frisé - foi dado em
+1978 e foi reconhecido como uma raça Franco-Belga);
+	

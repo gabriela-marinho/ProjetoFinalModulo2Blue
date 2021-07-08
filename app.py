@@ -28,22 +28,24 @@ class racas(db.Model):
         self.nome = nome
         self.imagem = imagem
         self.curiosidade = curiosidade
+        
     # o static usa ,geralmente em uma manipulaçao que vai trazer algum registro do banco
     @staticmethod
     def read_all():
         # SELECT * FROM filmes ORDER BY id ASC
-        return racas.query.order_by(racas.id.asc()).all()
-    db = SQLAlchemy(app)
+        result = racas.query.order_by(racas.id.asc()).all()
+        db.session.close_all()
+        return result
+    
 
     @staticmethod
     def read_single(id_registro):
         # SELECT * FROM filmes ORDER BY id ASC
-        return racas.query.get(id_registro)
-    db = SQLAlchemy(app)    
-    
+        result = racas.query.get(id_registro)
+        db.session.close_all()
+        return result
 
-    def save(self): #função para salvar os dados inserido via input no bd, 
-    #não é staticmethod pq nao precisa de uma qyuery para ser chamado e adicionado
+    def save(self): #função para salvar os dados inserido via input no bd, não é staticmethod pq nao precisa de uma qyuery para ser chamado e adicionado
         db.session.add(self)
         db.session.commit()
 
@@ -55,7 +57,8 @@ class racas(db.Model):
         
     def delete(self):   # funcao que vai apagar o registro recebido pelo usuario na pagina pelo botão excluir 
         db.session.delete(self)
-        db.session.commit()       
+        db.session.commit()
+        db.session.close_all()       
 
 @app.route("/")
 def index():
@@ -124,3 +127,4 @@ def delete_confirmed(id_registro):
 
 if (__name__ == "__main__"):
     app.run(debug=True)
+
