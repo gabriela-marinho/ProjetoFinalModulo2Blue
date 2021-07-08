@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 body {
-    background: rgba(129, 197, 209, 0.418);
+    background: rgba(39, 8, 124, 0.479); 
     font-family: "Montserrat", sans-serif;
     margin: 0;
     padding: 0px 0;
@@ -9,17 +9,18 @@ body {
 
 .header{
     padding-top: 20px;
-    background: #badfcf;
+    background: #25014e77;
 }
 
 .bloco{
     display: flex;
     justify-content: center;
     text-align: center;
+    text-overflow: ellipsis;
 }
 
 .botao{
-    background-color: rgb(11, 112, 226);
+    background-color: rgb(124, 6, 114);
     border:#FFFFFF;
     border-radius: 10px;
     color: white;
@@ -63,13 +64,15 @@ body {
 }
 
 .form{
-    width: 600px;
-    /* border:1px solid black */
+    width:1000px;
+    text-align: center;
+    
 }
 
 .form_input{
     align-items: center;
     justify-content: space-between;
+    border-spacing: 0;
 }
 
 .form_input label{

@@ -52,6 +52,10 @@ class racas(db.Model):
         self.imagem = novo_imagem
         self.curiosidade = novo_curiosidade
         self.save()
+        
+    def delete(self):   # funcao que vai apagar o registro recebido pelo usuario na pagina pelo botão excluir 
+        db.session.delete(self)
+        db.session.commit()       
 
 @app.route("/")
 def index():
@@ -97,7 +101,26 @@ def update(id_registro):
         # # novo_registro = racas(form['nome'], form['imagem'],form['curiosidade'])
         # registro.update(novo_registro)
         sucesso = True
-    return render_template('update.html',registro=registro,sucesso=sucesso)   
+    return render_template('update.html',registro=registro,sucesso=sucesso) 
+
+@app.route('/delete/<id_registro>')
+def delete(id_registro):
+    registro= racas.read_single(id_registro)
+    return render_template('delete.html', registro=registro)
+
+@app.route('/delete/<id_registro>/confirmed')
+def delete_confirmed(id_registro):
+    confirmar = False
+
+    registro= racas.read_single(id_registro)
+
+    if registro:
+        registro.delete()
+        confirmar=True
+
+    return render_template('delete.html',registro=registro,confirmar=confirmar)  
+
+
 
 if (__name__ == "__main__"):
     app.run(debug=True)
