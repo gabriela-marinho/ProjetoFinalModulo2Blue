@@ -47,7 +47,7 @@ body {
 }
 
 .tabela tr:nth-child(even) td{
-    background-color:lavender;
+    background-color:rgb(212, 184, 231);
 }
 
 .tabela td{

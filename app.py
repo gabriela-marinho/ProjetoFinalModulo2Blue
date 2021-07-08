@@ -4,7 +4,7 @@ from werkzeug.datastructures import RequestCacheControl
 
 app = Flask(__name__)
 
-# Configurações de acesso ao banco de dados
+
 user = 'uutnfujn'
 password = 'TJ-budc9lkNSwDgt29vxcSjalpXx2bj7'
 host = 'tuffi.db.elephantsql.com'
@@ -14,10 +14,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{user}:{password}@{host}/
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = "chave escondidamente"
 
-# Instanciando objeto da classe SQLAlchemy
+
 db = SQLAlchemy(app)
 
-# Modelar a Classe Filmes -> tabela racas
+
 class racas(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(255), nullable=False)
@@ -29,10 +29,10 @@ class racas(db.Model):
         self.imagem = imagem
         self.curiosidade = curiosidade
         
-    # o static usa ,geralmente em uma manipulaçao que vai trazer algum registro do banco
+    
     @staticmethod
     def read_all():
-        # SELECT * FROM filmes ORDER BY id ASC
+        
         result = racas.query.order_by(racas.id.asc()).all()
         db.session.close_all()
         return result
@@ -40,12 +40,12 @@ class racas(db.Model):
 
     @staticmethod
     def read_single(id_registro):
-        # SELECT * FROM filmes ORDER BY id ASC
+        
         result = racas.query.get(id_registro)
         db.session.close_all()
         return result
 
-    def save(self): #função para salvar os dados inserido via input no bd, não é staticmethod pq nao precisa de uma qyuery para ser chamado e adicionado
+    def save(self): 
         db.session.add(self)
         db.session.commit()
 
@@ -55,7 +55,7 @@ class racas(db.Model):
         self.curiosidade = novo_curiosidade
         self.save()
         
-    def delete(self):   # funcao que vai apagar o registro recebido pelo usuario na pagina pelo botão excluir 
+    def delete(self):   
         db.session.delete(self)
         db.session.commit()
         db.session.close_all()       
@@ -68,7 +68,7 @@ def index():
 @app.route("/read")
 def read_all():
     registros = racas.read_all()
-    # Chamada do método read_all da classe racas, que representa a tabela racas do banco de dados.
+    
     registros = racas.read_all()
     return render_template("read_all.html", registros=registros)
 
@@ -81,28 +81,27 @@ def read_id(id_registro):
 
 @app.route("/create", methods=('GET', 'POST'))
 def create():
-    id_registro_novo = None # cria uma variável nula para o novo ID atribuído
+    id_registro_novo = None 
 
-    if request.method == 'POST': # verifica se está recebendo alguma coisa por POST
-        form = request.form # armazena o formulário recebido por POST
+    if request.method == 'POST': 
+        form = request.form 
 
-        registro = racas(form['nome'], form['imagem'],form['curiosidade']) # cria um novo registro (objeto) com nome e imagem_url recebidos
-        registro.save() # chama a função save da classe (adiciona e commita)
+        registro = racas(form['nome'], form['imagem'],form['curiosidade']) 
+        registro.save() 
 
-        id_registro_novo = registro.id # atribui a novo_id o ID do novo registro criado
+        id_registro_novo = registro.id 
 
-    return render_template("create.html",id_registro_novo = id_registro_novo) # carrega o create.html passando o valor de novo_id (None ou novo ID atribuído)
+    return render_template("create.html",id_registro_novo = id_registro_novo) 
 
 @app.route("/update/<id_registro>", methods=('GET', 'POST'))
 def update(id_registro):
-    sucesso = False # se foi alterado com sucesso ou nao
+    sucesso = False 
     registro= racas.read_single(id_registro)
 
     if request.method == 'POST':
         form = request.form
         registro.update(form['nome'], form['imagem'],form['curiosidade'])
-        # # novo_registro = racas(form['nome'], form['imagem'],form['curiosidade'])
-        # registro.update(novo_registro)
+        
         sucesso = True
     return render_template('update.html',registro=registro,sucesso=sucesso) 
 
